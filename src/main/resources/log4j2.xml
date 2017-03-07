@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="MyApp" packages="">
+    <!--<Appenders>-->
+        <!--<Console name="STDOUT" target="SYSTEM_OUT">-->
+            <!--<PatternLayout pattern = "%d %p %c{1.} [%t]  %m%n"/>-->
+        <!--</Console>-->
+    <!--</Appenders>-->
+
+    <!--<Loggers>-->
+    <!--<Root level="error">-->
+    <!--<AppenderRef ref="STDOUT"/>-->
+    <!--</Root>-->
+    <!--<Root level="info">-->
+    <!--<AppenderRef ref="STDOUT"/>-->
+    <!--</Root>-->
+    <!--<Root level="debug">-->
+    <!--<AppenderRef ref="STDOUT"/>-->
+    <!--</Root>-->
+    <!--</Loggers>-->
+
+        <!--<Appenders>-->
+            <!--<File name="MyFile" fileName="log/app.log" append="false">-->
+                <!--<PatternLayout>-->
+                    <!--<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>-->
+                <!--</PatternLayout>-->
+            <!--</File>-->
+        <!--</Appenders>-->
+        <!--<Loggers>-->
+            <!--<Root level="error">-->
+                <!--<AppenderRef ref="MyFile"/>-->
+            <!--</Root>-->
+            <!--<Root level="info">-->
+                <!--<AppenderRef ref="MyFile"/>-->
+            <!--</Root>-->
+            <!--<Root level="debug">-->
+                <!--<AppenderRef ref="MyFile"/>-->
+            <!--</Root>-->
+        <!--</Loggers>-->
+
+    <Appenders>
+        <SMTP name="Mail"
+              subject="Error Log"
+              to="tmjcsh@gmail.com"
+              from="tmjcsh@gmail.com"
+
+              smtpHost="smtp.gmail.com"
+              smtpProtocol = "smtps"
+              smtpPort="465"
+
+              bufferSize="512"
+              smtpDebug = "true"
+              smtpAuth = "true"
+              smtp.starttls.enable ="false"
+
+              smtpUsername = "tmjcsh@gmail.com"
+              smtpPassword = 123456>
+        </SMTP>
+    </Appenders>
+    <Loggers>
+        <Root level="error">
+            <AppenderRef ref="Mail"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
