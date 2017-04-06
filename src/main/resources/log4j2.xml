@@ -37,28 +37,53 @@
             <!--</Root>-->
         <!--</Loggers>-->
 
+    <!--<Appenders>-->
+        <!--<SMTP name="Mail"-->
+              <!--subject="Error Log"-->
+              <!--to="tmjcsh@gmail.com"-->
+              <!--from="tmjcsh@gmail.com"-->
+
+              <!--smtpHost="smtp.gmail.com"-->
+              <!--smtpProtocol = "smtps"-->
+              <!--smtpPort="465"-->
+
+              <!--bufferSize="512"-->
+              <!--smtpDebug = "true"-->
+              <!--smtpAuth = "true"-->
+              <!--smtp.starttls.enable ="false"-->
+
+              <!--smtpUsername = "tmjcsh@gmail.com"-->
+              <!--smtpPassword = "9D3-9Gs-D4E-X5W">-->
+        <!--</SMTP>-->
+    <!--</Appenders>-->
+    <!--<Loggers>-->
+        <!--<Root level="error">-->
+            <!--<AppenderRef ref="Mail"/>-->
+        <!--</Root>-->
+    <!--</Loggers>-->
+
+
     <Appenders>
-        <SMTP name="Mail"
-              subject="Error Log"
-              to="tmjcsh@gmail.com"
-              from="tmjcsh@gmail.com"
-
-              smtpHost="smtp.gmail.com"
-              smtpProtocol = "smtps"
-              smtpPort="465"
-
-              bufferSize="512"
-              smtpDebug = "true"
-              smtpAuth = "true"
-              smtp.starttls.enable ="false"
-
-              smtpUsername = "tmjcsh@gmail.com"
-              smtpPassword = 123456>
-        </SMTP>
+    <RollingFile name="RollingFile" fileName="log/apps.html"
+                 filePattern="log/apps-%d{yyyy-MM-dd}.html"
+                 ignoreExceptions="false" append="false">
+        <HTMLLayout charset="UTF-8" title="HTML Logs" locationInfo="true" />
+        <Policies>
+            <TimeBasedTriggeringPolicy />
+            <SizeBasedTriggeringPolicy size="250 MB"/>
+        </Policies>
+    </RollingFile>
     </Appenders>
+
     <Loggers>
         <Root level="error">
-            <AppenderRef ref="Mail"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+        <Root level="info">
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+        <Root level="debug">
+            <AppenderRef ref="RollingFile"/>
         </Root>
     </Loggers>
 
